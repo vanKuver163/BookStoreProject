@@ -1,0 +1,36 @@
+﻿@page
+@model BookStoreProject.Pages.Categorys.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookCategory[0].BookCategoryName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.BookCategory) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookCategoryName)
+            </td>
+            <td>
+                    <a asp-page="./Edit" asp-route-id="@item.BookCategoryId"><i class="bi bi-pencil"></i></a> |
+                    <a asp-page="./Details" asp-route-id="@item.BookCategoryId"><i class="bi bi-journal-text"></i></a> |
+                    <a asp-page="./Delete" asp-route-id="@item.BookCategoryId"><i class="bi bi-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
